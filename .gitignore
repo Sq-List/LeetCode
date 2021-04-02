@@ -9,6 +9,7 @@ out
 gen
 target
 *.json
+*.txt
 
 ### macOS template
 # General
