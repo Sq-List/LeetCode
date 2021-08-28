@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class ListNode {
 
-    private int val;
+    public int val;
     public ListNode next;
 
     public ListNode() { }
