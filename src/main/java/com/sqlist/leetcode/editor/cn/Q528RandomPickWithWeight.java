@@ -71,7 +71,7 @@ solution.pickIndex(); // 返回 0，返回下标 0，返回该下标概率为 1/
  **/
 public class Q528RandomPickWithWeight {
     public static void main(String[] args) {
-        Solution solution = new Q528RandomPickWithWeight().new Solution(new int[]{1, 2});
+        Solution solution = new Q528RandomPickWithWeight().new Solution(new int[]{1});
         System.out.println(solution.pickIndex());
         System.out.println(solution.pickIndex());
         System.out.println(solution.pickIndex());
@@ -82,6 +82,8 @@ public class Q528RandomPickWithWeight {
         System.out.println(solution.pickIndex());
         System.out.println(solution.pickIndex());
         System.out.println(solution.pickIndex());
+
+        System.out.println("------------------");
 
         Solution solution1 = new Q528RandomPickWithWeight().new Solution(new int[]{1, 3});
         System.out.println(solution1.pickIndex());
