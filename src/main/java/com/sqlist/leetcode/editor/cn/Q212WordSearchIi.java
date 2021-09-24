@@ -84,13 +84,13 @@ public class Q212WordSearchIi {
      * 字典树+dfs+回溯
      */
     class Solution {
-        class Node {
+        class TrieNode {
             private boolean end;
             private Character letter;
             private String prefix;
-            private Map<Character, Node> suffixMap;
+            private Map<Character, TrieNode> suffixMap;
 
-            public Node(boolean end, Character letter, String prefix, Map<Character, Node> suffixMap) {
+            public TrieNode(boolean end, Character letter, String prefix, Map<Character, TrieNode> suffixMap) {
                 this.end = end;
                 this.letter = letter;
                 this.prefix = prefix;
@@ -99,10 +99,10 @@ public class Q212WordSearchIi {
         }
 
         public List<String> findWords(char[][] board, String[] words) {
-            Node root = new Node(false, null, null, new HashMap<>());
+            TrieNode root = new TrieNode(false, null, null, new HashMap<>());
             // 建立字典树
             for (String word : words) {
-                Node head = root;
+                TrieNode head = root;
                 StringBuilder prefix = new StringBuilder();
                 for (int i = 0; i < word.length(); i++) {
                     boolean end = i == (word.length() - 1);
@@ -110,7 +110,7 @@ public class Q212WordSearchIi {
                     char c = word.charAt(i);
                     prefix.append(c);
                     if (!head.suffixMap.containsKey(c)) {
-                        Node temp = new Node(end, c, prefix.toString(), new HashMap<>());
+                        TrieNode temp = new TrieNode(end, c, prefix.toString(), new HashMap<>());
                         head.suffixMap.put(c, temp);
                     } else if (!head.suffixMap.get(c).end) {
                         // 如果已经有以当前prefix为结尾的单词话 不能够更改end值
@@ -133,7 +133,7 @@ public class Q212WordSearchIi {
             return resList;
         }
 
-        public void dfs(List<String> resList, char[][] board, boolean[][] vis, Node head, int i, int j) {
+        public void dfs(List<String> resList, char[][] board, boolean[][] vis, TrieNode head, int i, int j) {
             // 判断是否是最后的字字母
             if (head.end) {
                 resList.add(head.prefix);
