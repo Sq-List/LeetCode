@@ -2,6 +2,7 @@ package com.sqlist.leetcode.editor.cn.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.sqlist.leetcode.editor.cn.pojo.ListNode;
 
 /**
  * TODO
@@ -39,5 +40,17 @@ public class StringToUtils {
             arr[i] = stringToIntegerArray(cols.toString());
         }
         return arr;
+    }
+
+    public static ListNode stringToListNode(String input) {
+        input = input.substring(1, input.length() - 1);
+        String[] splitArr = input.split(",");
+
+        ListNode pre = null;
+        for (int i = splitArr.length - 1; i >= 0; i--) {
+            pre = new ListNode(Integer.parseInt(splitArr[i]), pre);
+        }
+
+        return pre;
     }
 }
