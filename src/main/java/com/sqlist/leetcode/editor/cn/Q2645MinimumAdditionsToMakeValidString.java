@@ -65,6 +65,18 @@ public class Q2645MinimumAdditionsToMakeValidString {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int addMinimum(String word) {
+            char[] wordCharArray = word.toCharArray();
+            int ans = (wordCharArray[0] - 'a') + ('c' - wordCharArray[word.length() - 1]);
+            for (int i = 1; i < word.length(); i++) {
+                ans += (wordCharArray[i] - wordCharArray[i - 1] - 1 + 3) % 3;
+            }
+            return ans;
+        }
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
+
+    class SolutionFool {
+        public int addMinimum(String word) {
             if (word.length() == 1) {
                 return 2;
             }
@@ -128,7 +140,6 @@ public class Q2645MinimumAdditionsToMakeValidString {
             return ans;
         }
     }
-    //leetcode submit region end(Prohibit modification and deletion)
 
 }
 
